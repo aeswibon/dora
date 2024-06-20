@@ -1,5 +1,5 @@
 import * as cron from "node-cron";
-import metricsCalculator from "./metrics";
+import metricsCalculator from "./metrics.js";
 
 const startCronJob = () => {
   cron.schedule("0 * * * *", async () => {

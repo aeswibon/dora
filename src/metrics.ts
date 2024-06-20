@@ -1,4 +1,5 @@
-import gitHubClient from "./github";
+import gitHubClient from "./github.js";
+import logger from "./logger.js";
 
 interface UserMetrics {
   user: string;
@@ -15,50 +16,69 @@ interface DoraMetrics {
 class MetricsCalculator {
   async calculateDeploymentFrequency(
     owner: string,
-    repo: string
+    repos: string[]
   ): Promise<Record<string, number>> {
-    const releases = await gitHubClient.getReleases(owner, repo);
     const userDeployments: Record<string, number> = {};
-
-    releases.forEach((release) => {
-      const user = release.author?.login || "unknown";
-      userDeployments[user] = (userDeployments[user] || 0) + 1;
-    });
-
+    for (const repo of repos) {
+      logger.debug(`Getting releases for ${owner}/${repo}`);
+      const releases = await gitHubClient.getReleases(owner, repo);
+      logger.debug(`Found ${releases.length} releases for ${owner}/${repo}`);
+      releases.forEach((release) => {
+        const user = release.author?.login || "unknown";
+        userDeployments[user] = (userDeployments[user] || 0) + 1;
+      });
+    }
     return userDeployments;
   }
 
   async calculateLeadTimeForChanges(
     owner: string,
-    repo: string
+    repos: string[]
   ): Promise<Record<string, number>> {
-    const prs = await gitHubClient.getPullRequests(owner, repo);
     const userLeadTime: Record<string, number> = {};
     const userPRCount: Record<string, number> = {};
 
-    for (const pr of prs) {
-      if (pr.merged_at) {
-        const commits = await gitHubClient.getPRCommits(owner, repo, pr.number);
+    for (const repo of repos) {
+      const prs = await gitHubClient.getPullRequests(owner, repo);
+      logger.debug(`Found ${prs.length} PRs for ${owner}/${repo}`);
+      for (const pr of prs) {
+        if (pr.merged_at) {
+          const commits = await gitHubClient.getPRCommits(
+            owner,
+            repo,
+            pr.number
+          );
 
-        const firstCommit = new Date(
-          commits[0].commit.committer?.date || 0
-        ).getTime();
-        const leadTime = new Date(pr.merged_at).getTime() - firstCommit;
-        const user = pr.user?.login || "unknown";
+          logger.debug(
+            `Found ${commits.length} commits for PR ${pr.number} in ${owner}/${repo}`
+          );
 
-        userLeadTime[user] = (userLeadTime[user] || 0) + leadTime;
-        userPRCount[user] = (userPRCount[user] || 0) + 1;
+          if (!commits.length) {
+            logger.warn(
+              `No commits found for PR ${pr.number} in ${owner}/${repo}`
+            );
+            continue;
+          }
+          const firstCommit = new Date(
+            commits[0].commit.committer?.date || 0
+          ).getTime();
+          const leadTime = new Date(pr.merged_at).getTime() - firstCommit;
+          const user = pr.user?.login || "unknown";
+
+          userLeadTime[user] = (userLeadTime[user] || 0) + leadTime;
+          userPRCount[user] = (userPRCount[user] || 0) + 1;
+        }
+      }
+
+      for (const user in userLeadTime) {
+        userLeadTime[user] = userLeadTime[user] / userPRCount[user];
       }
     }
-
-    for (const user in userLeadTime) {
-      userLeadTime[user] = userLeadTime[user] / userPRCount[user];
-    }
-
     return userLeadTime;
   }
 
   calculateChangeFailureRate(issues: any[]): Record<string, number> {
+    const userFailureRates: Record<string, number> = {};
     const userFailures: Record<string, number> = {};
     const userTotal: Record<string, number> = {};
 
@@ -71,12 +91,10 @@ class MetricsCalculator {
       }
     });
 
-    const userFailureRates: Record<string, number> = {};
     for (const user in userTotal) {
       userFailureRates[user] =
         ((userFailures[user] || 0) / userTotal[user]) * 100;
     }
-
     return userFailureRates;
   }
 
@@ -107,17 +125,27 @@ class MetricsCalculator {
 
   async calculateUserDoraMetrics(
     owner: string,
-    repo: string
+    repo?: string
   ): Promise<DoraMetrics> {
-    const issues = await gitHubClient.getIssues(owner, repo);
-
+    const repos = repo ? [repo] : await gitHubClient.getRepos(owner);
+    logger.debug(`Calculating DORA metrics for ${owner} and ${repos}`);
+    const issues = [];
+    for (const repo of repos) {
+      const issuesForRepo = await gitHubClient.getIssues(owner, repo);
+      issues.push(...issuesForRepo);
+    }
+    logger.debug(`Found ${issues.length} issues for ${owner}`);
     const userDeployments = await this.calculateDeploymentFrequency(
       owner,
-      repo
+      repos
     );
-    const userLeadTime = await this.calculateLeadTimeForChanges(owner, repo);
+    logger.debug("Deployment frequency: ", userDeployments);
+    const userLeadTime = await this.calculateLeadTimeForChanges(owner, repos);
+    logger.debug("Lead time: ", userLeadTime);
     const userFailureRates = this.calculateChangeFailureRate(issues);
+    logger.debug("Failure rates: ", userFailureRates);
     const userRestoreTime = this.calculateTimeToRestoreService(issues);
+    logger.debug("Restore time: ", userRestoreTime);
 
     const metrics: UserMetrics[] = [];
     const users = new Set<string>([
