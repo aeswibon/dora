@@ -15,6 +15,7 @@ model repos {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   owner     String
   repo      String
+  user      String
   timestamp DateTime @default(now())
 }
 

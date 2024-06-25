@@ -1,20 +1,21 @@
 import * as cron from "node-cron";
+import fetchData from "./bulk.js";
 import DataDB from "./db/data.js";
-import MetricsCalculator from "./metrics.js";
+import logger from "./logger.js";
 
 const startCronJob = () => {
-  cron.schedule("0 * * * *", async () => {
-    // Every hour
-    console.log("Running cron job to calculate DORA metrics...");
+  cron.schedule("0 0 * * *", async () => {
+    // Run the cron job every day at midnight
+    logger.info("Running cron job");
     try {
       const dataDB = new DataDB();
       await dataDB.connect();
-      const metric = new MetricsCalculator(dataDB);
-      const metrics = await metric.calculateUserDoraMetrics("owner_name");
-      console.log(`DORA Metrics: ${JSON.stringify(metrics, null, 2)}`);
+      const startDate = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      startDate.setUTCHours(0, 0, 0, 0);
+      await fetchData("coronasafe", dataDB, startDate);
       await dataDB.close();
     } catch (error) {
-      console.error(`Error calculating DORA metrics: ${error}`);
+      logger.error(`Error running cron job: ${error}`);
     }
   });
 };

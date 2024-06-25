@@ -41,6 +41,8 @@ class GitHubClient {
     owner: string,
     repo: string,
     prNumber: number,
+    startDate: Date,
+    endDate: Date,
     perPage = 1
   ) {
     try {
@@ -58,7 +60,18 @@ class GitHubClient {
         data.push(...commits);
       }
       logger.debug(`Found ${data.length} commits for PR ${prNumber}`);
-      return data;
+      return data.filter((commit) => {
+        const commitDate = commit.commit.committer?.date;
+        if (!commitDate) {
+          logger.warn(
+            `Commit date is undefined for commit ${commit.sha} in PR ${prNumber}`
+          );
+          return false;
+        }
+        return (
+          new Date(commitDate) >= startDate && new Date(commitDate) <= endDate
+        );
+      });
     } catch (error) {
       logger.error(
         `Error getting commits for PR ${prNumber} in ${owner}/${repo}: ${error}`
@@ -67,7 +80,13 @@ class GitHubClient {
     }
   }
 
-  async getReleases(owner: string, repo: string, perPage = 100) {
+  async getReleases(
+    owner: string,
+    repo: string,
+    startDate: Date,
+    endDate: Date,
+    perPage = 100
+  ) {
     try {
       const iterator = this.app.octokit.paginate.iterator(
         this.app.octokit.rest.repos.listReleases,
@@ -84,14 +103,24 @@ class GitHubClient {
         data.push(...releases);
       }
       logger.debug(`Found ${data.length} releases for ${owner}/${repo}`);
-      return data;
+      return data.filter(
+        (release) =>
+          new Date(release.created_at) >= startDate &&
+          new Date(release.created_at) <= endDate
+      );
     } catch (error) {
       logger.error(`Error getting releases for ${owner}/${repo}: ${error}`);
       return [];
     }
   }
 
-  async getPullRequests(owner: string, repo: string, perPage = 100) {
+  async getPullRequests(
+    owner: string,
+    repo: string,
+    startDate: Date,
+    endDate: Date,
+    perPage = 100
+  ) {
     try {
       const iterator = this.app.octokit.paginate.iterator(
         this.app.octokit.rest.pulls.list,
@@ -109,14 +138,24 @@ class GitHubClient {
         data.push(...prs);
       }
       logger.debug(`Found ${data.length} PRs for ${owner}/${repo}`);
-      return data;
+      return data.filter(
+        (pr) =>
+          new Date(pr.created_at) >= startDate &&
+          new Date(pr.created_at) <= endDate
+      );
     } catch (error) {
       logger.error(`Error getting PRs for ${owner}/${repo}: ${error}`);
       return [];
     }
   }
 
-  async getIssues(owner: string, repo: string, perPage = 100) {
+  async getIssues(
+    owner: string,
+    repo: string,
+    startDate: Date,
+    endDate: Date,
+    perPage = 100
+  ) {
     try {
       const iterator = this.app.octokit.paginate.iterator(
         this.app.octokit.rest.issues.listForRepo,
@@ -134,14 +173,18 @@ class GitHubClient {
         data.push(...issues);
       }
       logger.debug(`Found ${data.length} issues for ${owner}/${repo}`);
-      return data;
+      return data.filter(
+        (issue) =>
+          new Date(issue.created_at) >= startDate &&
+          new Date(issue.created_at) <= endDate
+      );
     } catch (error) {
       logger.error(`Error getting issues for ${owner}/${repo}: ${error}`);
       return [];
     }
   }
 
-  async getRepos(owner: string, perPage = 100) {
+  async getRepos(owner: string, startDate: Date, endDate: Date, perPage = 100) {
     try {
       const iterator = this.app.octokit.paginate.iterator(
         this.app.octokit.rest.repos.listForOrg,
@@ -157,7 +200,14 @@ class GitHubClient {
         data.push(...repos);
       }
       logger.debug(`Found ${data.length} repos for ${owner}`);
-      return data.map((repo) => repo.name);
+      return data.filter((repo) => {
+        const repoDate = repo.created_at;
+        if (!repoDate) {
+          logger.warn(`Repo date is undefined for ${repo.name}`);
+          return false;
+        }
+        return new Date(repoDate) >= startDate && new Date(repoDate) <= endDate;
+      });
     } catch (error) {
       logger.error(`Error getting repos for ${owner}: ${error}`);
       return [];
