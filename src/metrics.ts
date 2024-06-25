@@ -1,4 +1,5 @@
-import gitHubClient from "./github.js";
+import { PrismaClient } from "@prisma/client";
+import DataDB from "./db/data.js";
 import logger from "./logger.js";
 
 interface UserMetrics {
@@ -14,20 +15,27 @@ interface DoraMetrics {
 }
 
 class MetricsCalculator {
+  private db: PrismaClient;
+  constructor(dataDB: DataDB) {
+    this.db = dataDB.db;
+  }
+
   async calculateDeploymentFrequency(
-    owner: string,
-    repos: string[]
+    owner: string
   ): Promise<Record<string, number>> {
     const userDeployments: Record<string, number> = {};
-    for (const repo of repos) {
-      logger.debug(`Getting releases for ${owner}/${repo}`);
-      const releases = await gitHubClient.getReleases(owner, repo);
-      logger.debug(`Found ${releases.length} releases for ${owner}/${repo}`);
-      releases.forEach((release) => {
-        const user = release.author?.login || "unknown";
-        userDeployments[user] = (userDeployments[user] || 0) + 1;
-      });
-    }
+    const releaseDocs = await this.db.releases.findMany({
+      where: { org: owner },
+    });
+    logger.debug(
+      `Calculating deployment frequency for ${releaseDocs.length} releases`
+    );
+    releaseDocs.forEach((releaseDoc) => {
+      const release = releaseDoc.release;
+      const user: string = releaseDoc.user;
+      logger.debug(`Release ${release.name} by ${user}`);
+      userDeployments[user] = (userDeployments[user] || 0) + 1;
+    });
     return userDeployments;
   }
 
@@ -37,39 +45,25 @@ class MetricsCalculator {
   ): Promise<Record<string, number>> {
     const userLeadTime: Record<string, number> = {};
     const userPRCount: Record<string, number> = {};
-
     for (const repo of repos) {
-      const prs = await gitHubClient.getPullRequests(owner, repo);
-      logger.debug(`Found ${prs.length} PRs for ${owner}/${repo}`);
-      for (const pr of prs) {
+      const prDocs = await this.db.prs.findMany({
+        where: { org: owner, repo: repo },
+      });
+      logger.debug(`Calculating lead time for ${prDocs.length} PRs`);
+      for (const prDoc of prDocs) {
+        const pr = prDoc.pr;
+        const commit = prDoc.commit;
         if (pr.merged_at) {
-          const commits = await gitHubClient.getPRCommits(
-            owner,
-            repo,
-            pr.number
-          );
-
-          logger.debug(
-            `Found ${commits.length} commits for PR ${pr.number} in ${owner}/${repo}`
-          );
-
-          if (!commits.length) {
-            logger.warn(
-              `No commits found for PR ${pr.number} in ${owner}/${repo}`
-            );
-            continue;
-          }
           const firstCommit = new Date(
-            commits[0].commit.committer?.date || 0
+            commit.commit.committer.date || 0
           ).getTime();
           const leadTime = new Date(pr.merged_at).getTime() - firstCommit;
-          const user = pr.user?.login || "unknown";
+          const user = prDoc.user;
 
           userLeadTime[user] = (userLeadTime[user] || 0) + leadTime;
           userPRCount[user] = (userPRCount[user] || 0) + 1;
         }
       }
-
       for (const user in userLeadTime) {
         userLeadTime[user] = userLeadTime[user] / userPRCount[user];
       }
@@ -77,19 +71,29 @@ class MetricsCalculator {
     return userLeadTime;
   }
 
-  calculateChangeFailureRate(issues: any[]): Record<string, number> {
+  async calculateChangeFailureRate(
+    owner: string,
+    repos: string[]
+  ): Promise<Record<string, number>> {
     const userFailureRates: Record<string, number> = {};
     const userFailures: Record<string, number> = {};
     const userTotal: Record<string, number> = {};
 
-    issues.forEach((issue) => {
-      const user = issue.user?.login || "unknown";
-      userTotal[user] = (userTotal[user] || 0) + 1;
+    for (const repo of repos) {
+      const issueDocs = await this.db.issues.findMany({
+        where: { org: owner, repo: repo },
+      });
+      logger.debug(`Calculating failure rate for ${issueDocs.length} issues`);
+      issueDocs.forEach((issueDoc) => {
+        const issue = issueDoc.issue;
+        const user = issueDoc.user;
+        userTotal[user] = (userTotal[user] || 0) + 1;
 
-      if (issue.labels.some((label: any) => label.name === "failure")) {
-        userFailures[user] = (userFailures[user] || 0) + 1;
-      }
-    });
+        if (issue.labels.some((label: any) => label.name === "failure")) {
+          userFailures[user] = (userFailures[user] || 0) + 1;
+        }
+      });
+    }
 
     for (const user in userTotal) {
       userFailureRates[user] =
@@ -98,23 +102,33 @@ class MetricsCalculator {
     return userFailureRates;
   }
 
-  calculateTimeToRestoreService(issues: any[]): Record<string, number> {
+  async calculateTimeToRestoreService(
+    owner: string,
+    repos: string[]
+  ): Promise<Record<string, number>> {
     const userRestoreTime: Record<string, number> = {};
     const userFailureCount: Record<string, number> = {};
 
-    issues.forEach((issue) => {
-      const user = issue.user?.login || "unknown";
-      if (
-        issue.labels.some((label: any) => label.name === "failure") &&
-        issue.closed_at
-      ) {
-        const restoreTime =
-          new Date(issue.closed_at).getTime() -
-          new Date(issue.created_at).getTime();
-        userRestoreTime[user] = (userRestoreTime[user] || 0) + restoreTime;
-        userFailureCount[user] = (userFailureCount[user] || 0) + 1;
-      }
-    });
+    for (const repo of repos) {
+      const issueDocs = await this.db.issues.findMany({
+        where: { org: owner, repo: repo },
+      });
+      logger.debug(`Calculating restore time for ${issueDocs.length} issues`);
+      issueDocs.forEach((issueDoc) => {
+        const issue = issueDoc.issue;
+        const user = issueDoc.user;
+        if (
+          issue.labels.some((label: any) => label.name === "failure") &&
+          issue.closed_at
+        ) {
+          const restoreTime =
+            new Date(issue.closed_at).getTime() -
+            new Date(issue.created_at).getTime();
+          userRestoreTime[user] = (userRestoreTime[user] || 0) + restoreTime;
+          userFailureCount[user] = (userFailureCount[user] || 0) + 1;
+        }
+      });
+    }
 
     for (const user in userRestoreTime) {
       userRestoreTime[user] = userRestoreTime[user] / userFailureCount[user];
@@ -127,24 +141,25 @@ class MetricsCalculator {
     owner: string,
     repo?: string
   ): Promise<DoraMetrics> {
-    const repos = repo ? [repo] : await gitHubClient.getRepos(owner);
-    logger.debug(`Calculating DORA metrics for ${owner} and ${repos}`);
-    const issues = [];
-    for (const repo of repos) {
-      const issuesForRepo = await gitHubClient.getIssues(owner, repo);
-      issues.push(...issuesForRepo);
-    }
-    logger.debug(`Found ${issues.length} issues for ${owner}`);
-    const userDeployments = await this.calculateDeploymentFrequency(
-      owner,
-      repos
-    );
+    logger.debug(`Calculating DORA metrics for org: ${owner}`);
+    const repos = repo
+      ? [repo]
+      : (await this.db.repos.findMany({ where: { owner: owner } })).map(
+          (r) => r.repo
+        );
+    const userDeployments = await this.calculateDeploymentFrequency(owner);
     logger.debug("Deployment frequency: ", userDeployments);
     const userLeadTime = await this.calculateLeadTimeForChanges(owner, repos);
     logger.debug("Lead time: ", userLeadTime);
-    const userFailureRates = this.calculateChangeFailureRate(issues);
+    const userFailureRates = await this.calculateChangeFailureRate(
+      owner,
+      repos
+    );
     logger.debug("Failure rates: ", userFailureRates);
-    const userRestoreTime = this.calculateTimeToRestoreService(issues);
+    const userRestoreTime = await this.calculateTimeToRestoreService(
+      owner,
+      repos
+    );
     logger.debug("Restore time: ", userRestoreTime);
 
     const metrics: UserMetrics[] = [];
@@ -155,6 +170,7 @@ class MetricsCalculator {
       ...Object.keys(userRestoreTime),
     ]);
 
+    logger.debug("Users with metrics: ", users);
     users.forEach((user) => {
       metrics.push({
         user,
@@ -169,4 +185,4 @@ class MetricsCalculator {
   }
 }
 
-export default new MetricsCalculator();
+export default MetricsCalculator;

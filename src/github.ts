@@ -37,16 +37,27 @@ class GitHubClient {
       });
   }
 
-  async getPRCommits(owner: string, repo: string, prNumber: number) {
+  async getPRCommits(
+    owner: string,
+    repo: string,
+    prNumber: number,
+    perPage = 1
+  ) {
     try {
-      const { data } = await this.app.octokit.request(
-        "GET /repos/{owner}/{repo}/pulls/{pull_number}/commits",
+      const iterator = this.app.octokit.paginate.iterator(
+        this.app.octokit.rest.pulls.listCommits,
         {
           owner,
           repo,
           pull_number: prNumber,
+          per_page: perPage,
         }
       );
+      const data = [];
+      for await (const { data: commits } of iterator) {
+        data.push(...commits);
+      }
+      logger.debug(`Found ${data.length} commits for PR ${prNumber}`);
       return data;
     } catch (error) {
       logger.error(
@@ -56,15 +67,23 @@ class GitHubClient {
     }
   }
 
-  async getReleases(owner: string, repo: string) {
+  async getReleases(owner: string, repo: string, perPage = 100) {
     try {
-      const { data } = await this.app.octokit.request(
-        "GET /repos/{owner}/{repo}/releases",
+      const iterator = this.app.octokit.paginate.iterator(
+        this.app.octokit.rest.repos.listReleases,
         {
           owner,
           repo,
+          per_page: perPage,
+          sort: "created",
+          direction: "desc",
         }
       );
+      const data = [];
+      for await (const { data: releases } of iterator) {
+        data.push(...releases);
+      }
+      logger.debug(`Found ${data.length} releases for ${owner}/${repo}`);
       return data;
     } catch (error) {
       logger.error(`Error getting releases for ${owner}/${repo}: ${error}`);
@@ -72,17 +91,24 @@ class GitHubClient {
     }
   }
 
-  async getPullRequests(owner: string, repo: string) {
+  async getPullRequests(owner: string, repo: string, perPage = 100) {
     try {
-      logger.debug(`Getting PRs for ${owner}/${repo}`);
-      const { data } = await this.app.octokit.request(
-        "GET /repos/{owner}/{repo}/pulls",
+      const iterator = this.app.octokit.paginate.iterator(
+        this.app.octokit.rest.pulls.list,
         {
           owner,
           repo,
           state: "closed",
+          per_page: perPage,
+          sort: "created",
+          direction: "desc",
         }
       );
+      const data = [];
+      for await (const { data: prs } of iterator) {
+        data.push(...prs);
+      }
+      logger.debug(`Found ${data.length} PRs for ${owner}/${repo}`);
       return data;
     } catch (error) {
       logger.error(`Error getting PRs for ${owner}/${repo}: ${error}`);
@@ -90,17 +116,23 @@ class GitHubClient {
     }
   }
 
-  async getIssues(owner: string, repo: string) {
+  async getIssues(owner: string, repo: string, perPage = 100) {
     try {
-      logger.debug(`Getting issues for ${owner}/${repo}`);
-      const { data } = await this.app.octokit.request(
-        "GET /repos/{owner}/{repo}/issues",
+      const iterator = this.app.octokit.paginate.iterator(
+        this.app.octokit.rest.issues.listForRepo,
         {
           owner,
           repo,
           state: "closed",
+          per_page: perPage,
+          sort: "created",
+          direction: "desc",
         }
       );
+      const data = [];
+      for await (const { data: issues } of iterator) {
+        data.push(...issues);
+      }
       logger.debug(`Found ${data.length} issues for ${owner}/${repo}`);
       return data;
     } catch (error) {
@@ -109,14 +141,22 @@ class GitHubClient {
     }
   }
 
-  async getRepos(owner: string) {
+  async getRepos(owner: string, perPage = 100) {
     try {
-      const { data } = await this.app.octokit.request(
-        "GET /users/{username}/repos",
+      const iterator = this.app.octokit.paginate.iterator(
+        this.app.octokit.rest.repos.listForOrg,
         {
-          username: owner,
+          org: owner,
+          per_page: perPage,
+          sort: "created",
+          direction: "desc",
         }
       );
+      const data = [];
+      for await (const { data: repos } of iterator) {
+        data.push(...repos);
+      }
+      logger.debug(`Found ${data.length} repos for ${owner}`);
       return data.map((repo) => repo.name);
     } catch (error) {
       logger.error(`Error getting repos for ${owner}: ${error}`);

@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator json {
+  provider = "prisma-json-types-generator"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model repos {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  owner     String
+  repo      String
+  timestamp DateTime @default(now())
+}
+
+model releases {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  org       String
+  repo      String
+  user      String
+  /// [ReleaseType]
+  release   Json
+  timestamp DateTime @default(now())
+}
+
+model issues {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  org       String
+  repo      String
+  user      String
+  /// [IssueType]
+  issue     Json
+  timestamp DateTime @default(now())
+}
+
+model prs {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  org       String
+  repo      String
+  user      String
+  /// [PullRequestType]
+  pr        Json
+  /// [CommitType]
+  commit    Json
+  timestamp DateTime @default(now())
+}
