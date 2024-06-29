@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { DateTime } from "luxon";
 import DataDB from "./db/data.js";
 import logger from "./logger.js";
 
@@ -18,6 +19,7 @@ interface OrgMetrics {
 }
 
 interface RepoMetrics {
+  repo: string;
   deploymentFrequency: number;
   leadTimeForChanges: number;
   changeFailureRate: number;
@@ -25,9 +27,44 @@ interface RepoMetrics {
 }
 
 interface DoraMetrics {
-  users: UserMetrics[];
-  orgMetrics: OrgMetrics;
-  repoMetrics: Record<string, RepoMetrics>;
+  users: Record<string, UserMetrics[]>;
+  orgMetrics: Record<string, OrgMetrics>;
+  repoMetrics: Record<string, RepoMetrics[]>;
+}
+
+function* dateRange(
+  startDate: string,
+  endDate: string,
+  granularity: "day" | "week" | "month" = "week"
+): Generator<[string, string], void, unknown> {
+  const start = DateTime.fromISO(startDate);
+  const end = DateTime.fromISO(endDate);
+
+  if (granularity === "day") {
+    let current = start.startOf("day");
+    while (current <= end) {
+      yield [current.toISODate() ?? "", current.toISODate() ?? ""];
+      current = current.plus({ days: 1 });
+    }
+  } else if (granularity === "week") {
+    let current = start.startOf("week");
+    while (current <= end) {
+      const intervalEnd = DateTime.min(current.plus({ days: 6 }), end);
+      yield [current.toISODate() ?? "", intervalEnd.toISODate() ?? ""];
+      current = current.plus({ weeks: 1 });
+    }
+  } else if (granularity === "month") {
+    let current = start.startOf("month");
+    while (current <= end) {
+      const intervalEnd = DateTime.min(current.endOf("month"), end);
+      yield [current.toISODate() ?? "", intervalEnd.toISODate() ?? ""];
+      current = current.plus({ months: 1 });
+    }
+  } else {
+    throw new Error(
+      "Unsupported granularity. Use 'daily' or 'week' or 'month'."
+    );
+  }
 }
 
 class MetricsCalculator {
@@ -47,15 +84,10 @@ class MetricsCalculator {
     return averages;
   }
 
-  private getDateRangeFilter(days: number): Date {
-    const now = new Date();
-    now.setDate(now.getDate() - days);
-    return now;
-  }
-
   async calculateDeploymentFrequency(
     owner: string,
-    startDate: Date = this.getDateRangeFilter(30)
+    startDate: Date,
+    endDate: Date
   ): Promise<{
     userDeployments: Record<string, number>;
     orgDeployment: number;
@@ -70,6 +102,7 @@ class MetricsCalculator {
         org: owner,
         timestamp: {
           gte: startDate,
+          lte: endDate,
         },
       },
     });
@@ -91,7 +124,8 @@ class MetricsCalculator {
   async calculateLeadTimeForChanges(
     owner: string,
     repos: string[],
-    startDate: Date = this.getDateRangeFilter(30)
+    startDate: Date,
+    endDate: Date
   ): Promise<{
     userLeadTime: Record<string, number>;
     orgLeadTime: number;
@@ -111,6 +145,7 @@ class MetricsCalculator {
           repo: repo,
           timestamp: {
             gte: startDate,
+            lte: endDate,
           },
         },
       });
@@ -149,7 +184,8 @@ class MetricsCalculator {
   async calculateChangeFailureRate(
     owner: string,
     repos: string[],
-    startDate: Date = this.getDateRangeFilter(30)
+    startDate: Date,
+    endDate: Date
   ): Promise<{
     userFailureRates: Record<string, number>;
     orgFailureRate: number;
@@ -169,6 +205,7 @@ class MetricsCalculator {
           repo: repo,
           timestamp: {
             gte: startDate,
+            lte: endDate,
           },
         },
       });
@@ -205,7 +242,8 @@ class MetricsCalculator {
   async calculateTimeToRestoreService(
     owner: string,
     repos: string[],
-    startDate: Date = this.getDateRangeFilter(30)
+    startDate: Date,
+    endDate: Date
   ): Promise<{
     userRestoreTime: Record<string, number>;
     orgRestoreTime: number;
@@ -225,6 +263,7 @@ class MetricsCalculator {
           repo: repo,
           timestamp: {
             gte: startDate,
+            lte: endDate,
           },
         },
       });
@@ -269,9 +308,22 @@ class MetricsCalculator {
 
   async calculateUserDoraMetrics(
     owner: string,
-    repo?: string,
-    days: number = 30
+    startDate: string,
+    endDate: string,
+    granularity?: string,
+    repo?: string
   ): Promise<DoraMetrics> {
+    const dates = [];
+    if (granularity === "week") {
+      for (const [start, end] of dateRange(startDate, endDate, "week")) {
+        dates.push([new Date(start), new Date(end)]);
+      }
+    } else if (granularity === "month") {
+      for (const [start, end] of dateRange(startDate, endDate, "month")) {
+        dates.push([new Date(start), new Date(end)]);
+      }
+    }
+    logger.debug(`Dates: ${JSON.stringify(dates)}`);
     logger.debug(`Calculating DORA metrics for org: ${owner}`);
     const repos = repo
       ? [repo]
@@ -279,74 +331,85 @@ class MetricsCalculator {
           (r) => r.repo
         );
 
-    const startDate = this.getDateRangeFilter(days);
-    const { userDeployments, orgDeployment, repoDeployments } =
-      await this.calculateDeploymentFrequency(owner, startDate);
-    logger.debug(
-      "Deployment frequency: ",
-      userDeployments,
-      orgDeployment,
-      repoDeployments
-    );
-
-    const { userLeadTime, orgLeadTime, repoLeadTime } =
-      await this.calculateLeadTimeForChanges(owner, repos, startDate);
-    logger.debug("Lead time: ", userLeadTime, orgLeadTime, repoLeadTime);
-
-    const { userFailureRates, orgFailureRate, repoFailureRates } =
-      await this.calculateChangeFailureRate(owner, repos, startDate);
-    logger.debug(
-      "Failure rates: ",
-      userFailureRates,
-      orgFailureRate,
-      repoFailureRates
-    );
-
-    const { userRestoreTime, orgRestoreTime, repoRestoreTime } =
-      await this.calculateTimeToRestoreService(owner, repos, startDate);
-    logger.debug(
-      "Restore time: ",
-      userRestoreTime,
-      orgRestoreTime,
-      repoRestoreTime
-    );
-
-    const metrics: UserMetrics[] = [];
-    const users = new Set<string>([
-      ...Object.keys(userDeployments),
-      ...Object.keys(userLeadTime),
-      ...Object.keys(userFailureRates),
-      ...Object.keys(userRestoreTime),
-    ]);
-
-    logger.debug("Users with metrics: ", users);
-    users.forEach((user) => {
-      metrics.push({
-        user,
-        deploymentFrequency: userDeployments[user] || 0,
-        leadTimeForChanges: userLeadTime[user] || 0,
-        changeFailureRate: userFailureRates[user] || 0,
-        timeToRestoreService: userRestoreTime[user] || 0,
-      });
-    });
-
-    const orgMetrics: OrgMetrics = {
-      deploymentFrequency: orgDeployment,
-      leadTimeForChanges: orgLeadTime,
-      changeFailureRate: orgFailureRate,
-      timeToRestoreService: orgRestoreTime,
+    const metrics: DoraMetrics = {
+      users: {},
+      orgMetrics: {},
+      repoMetrics: {},
     };
 
-    const repoMetrics: Record<string, RepoMetrics> = {};
-    for (const repo of repos) {
-      repoMetrics[repo] = {
-        deploymentFrequency: repoDeployments[repo] || 0,
-        leadTimeForChanges: repoLeadTime[repo] || 0,
-        changeFailureRate: repoFailureRates[repo] || 0,
-        timeToRestoreService: repoRestoreTime[repo] || 0,
+    for (const [start, end] of dates) {
+      const { userDeployments, orgDeployment, repoDeployments } =
+        await this.calculateDeploymentFrequency(owner, start, end);
+      logger.debug(
+        "Deployment frequency: ",
+        userDeployments,
+        orgDeployment,
+        repoDeployments
+      );
+
+      const { userLeadTime, orgLeadTime, repoLeadTime } =
+        await this.calculateLeadTimeForChanges(owner, repos, start, end);
+      logger.debug("Lead time: ", userLeadTime, orgLeadTime, repoLeadTime);
+
+      const { userFailureRates, orgFailureRate, repoFailureRates } =
+        await this.calculateChangeFailureRate(owner, repos, start, end);
+      logger.debug(
+        "Failure rates: ",
+        userFailureRates,
+        orgFailureRate,
+        repoFailureRates
+      );
+
+      const { userRestoreTime, orgRestoreTime, repoRestoreTime } =
+        await this.calculateTimeToRestoreService(owner, repos, start, end);
+      logger.debug(
+        "Restore time: ",
+        userRestoreTime,
+        orgRestoreTime,
+        repoRestoreTime
+      );
+
+      const userMetric: UserMetrics[] = [];
+      const users = new Set<string>([
+        ...Object.keys(userDeployments),
+        ...Object.keys(userLeadTime),
+        ...Object.keys(userFailureRates),
+        ...Object.keys(userRestoreTime),
+      ]);
+
+      logger.debug("Users with metrics: ", users);
+      users.forEach((user) => {
+        userMetric.push({
+          user,
+          deploymentFrequency: userDeployments[user] || 0,
+          leadTimeForChanges: userLeadTime[user] || 0,
+          changeFailureRate: userFailureRates[user] || 0,
+          timeToRestoreService: userRestoreTime[user] || 0,
+        });
+      });
+
+      const orgMetrics: OrgMetrics = {
+        deploymentFrequency: orgDeployment,
+        leadTimeForChanges: orgLeadTime,
+        changeFailureRate: orgFailureRate,
+        timeToRestoreService: orgRestoreTime,
       };
+
+      const repoMetrics: RepoMetrics[] = [];
+      repos.forEach((repo) => {
+        repoMetrics.push({
+          repo,
+          deploymentFrequency: repoDeployments[repo] || 0,
+          leadTimeForChanges: repoLeadTime[repo] || 0,
+          changeFailureRate: repoFailureRates[repo] || 0,
+          timeToRestoreService: repoRestoreTime[repo] || 0,
+        });
+      });
+      metrics.users[start.toISOString()] = userMetric;
+      metrics.orgMetrics[start.toISOString()] = orgMetrics;
+      metrics.repoMetrics[start.toISOString()] = repoMetrics;
     }
-    return { users: metrics, orgMetrics, repoMetrics };
+    return metrics;
   }
 }
 
