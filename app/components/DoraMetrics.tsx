@@ -2,7 +2,6 @@
 
 import { useQuery } from "@tanstack/react-query";
 import ReactEcharts from "echarts-for-react";
-import doraData from "./data.json";
 import { fetchDoraMetrics } from "./utils";
 
 type MetricEntry = {
@@ -18,18 +17,29 @@ type OrgMetrics = {
 
 const DoraMetricsChart = ({
   owner,
+  startDate,
+  endDate,
+  granularity,
   repo,
 }: {
   owner: string;
+  startDate: string;
+  endDate: string;
+  granularity: string;
   repo?: string;
 }) => {
-  const { data, isLoading, error } = useQuery({
+  const {
+    data: doraData,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["doraMetrics", owner, repo],
-    queryFn: () => fetchDoraMetrics(owner, repo),
+    queryFn: () =>
+      fetchDoraMetrics(owner, startDate, endDate, granularity, repo),
   });
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>Error fetching data</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching data</div>;
 
   const calculateAverageMetrics = (orgMetrics: OrgMetrics): MetricEntry => {
     const metrics = Object.values(orgMetrics);

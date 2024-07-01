@@ -1,12 +1,20 @@
 import axios from "axios";
 
 const api = axios.create({
-  // baseURL: "http://localhost:8080",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
-export const fetchDoraMetrics = async (owner: string, repo?: string) => {
+export const fetchDoraMetrics = async (
+  owner: string,
+  startDate: string,
+  endDate: string,
+  granularity: string,
+  repo?: string
+) => {
   try {
-    const response = await api.get(`/dora?owner=${owner}&repo=${repo}`);
+    const response = await api.get(
+      `/dora?owner=${owner}&startDate=${startDate}&endDate=${endDate}&granularity=${granularity}&repo=${repo}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching DORA metrics:", error);
