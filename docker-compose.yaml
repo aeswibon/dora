@@ -1,0 +1,31 @@
+services:
+  mongo:
+    image: mongo:latest
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - mongo-storage:/data/db
+      - mongo-config:/data/configdb
+  backend:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    links:
+      - mongo
+volumes:
+  influxdb-storage:
+  mongo-storage:
+  mongo-config:
