@@ -76,4 +76,11 @@ declare global {
       }[];
     };
   }
+
+  type ScoreType = {
+    deploymentFrequency: number;
+    leadTime: number;
+    meanTimeToRestore: number;
+    changeFailureRate: number;
+  };
 }

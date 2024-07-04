@@ -1,8 +1,10 @@
-import { App } from "octokit";
-import logger from "./logger.js";
+import { createAppAuth } from "@octokit/auth-app";
+import { App, Octokit } from "octokit";
+import logger from "./logger";
 
 class GitHubClient {
   private app: App;
+  private octokit: Octokit | null = null;
 
   constructor() {
     const appId = process.env.GITHUB_APP_ID;
@@ -30,53 +32,51 @@ class GitHubClient {
       privateKey: privateKey,
     });
 
-    this.app
-      .getInstallationOctokit(parseInt(installationId))
-      .then((octokit) => {
-        this.app.octokit = octokit;
-      });
+    if (installationId) {
+      this.initializeInstallationAuth(parseInt(installationId));
+    }
   }
 
-  async getPRCommits(
-    owner: string,
-    repo: string,
-    prNumber: number,
-    startDate: Date,
-    endDate: Date,
-    perPage = 1
-  ) {
+  private async initializeInstallationAuth(installationId: number) {
     try {
-      const iterator = this.app.octokit.paginate.iterator(
-        this.app.octokit.rest.pulls.listCommits,
-        {
-          owner,
-          repo,
-          pull_number: prNumber,
-          per_page: perPage,
-        }
+      this.octokit = await this.app.getInstallationOctokit(installationId);
+      logger.info(
+        `Initialized installation authentication for installation ID: ${installationId}`
       );
-      const data = [];
-      for await (const { data: commits } of iterator) {
-        data.push(...commits);
-      }
-      logger.debug(`Found ${data.length} commits for PR ${prNumber}`);
-      return data.filter((commit) => {
-        const commitDate = commit.commit.committer?.date;
-        if (!commitDate) {
-          logger.warn(
-            `Commit date is undefined for commit ${commit.sha} in PR ${prNumber}`
-          );
-          return false;
-        }
-        return (
-          new Date(commitDate) >= startDate && new Date(commitDate) <= endDate
-        );
-      });
     } catch (error) {
       logger.error(
-        `Error getting commits for PR ${prNumber} in ${owner}/${repo}: ${error}`
+        `Failed to initialize installation authentication: ${error}`
       );
-      return [];
+    }
+  }
+
+  private getOctokit(): Octokit {
+    if (!this.octokit) {
+      throw new Error(
+        "GitHub client is not authenticated. Call initializeAppAuth() or provide an installation ID."
+      );
+    }
+    return this.octokit;
+  }
+
+  isAuthenticated(): boolean {
+    return this.octokit !== null;
+  }
+
+  async initializeAppAuth(clientId?: string, clientSecret?: string) {
+    try {
+      const auth = createAppAuth({
+        appId: process.env.GITHUB_APP_ID!,
+        privateKey: process.env.GITHUB_APP_PRIVATE_KEY!,
+        clientId: clientId || process.env.GITHUB_APP_CLIENT_ID,
+        clientSecret: clientSecret || process.env.GITHUB_APP_CLIENT_SECRET,
+      });
+
+      const appAuthentication = await auth({ type: "app" });
+      this.octokit = new Octokit({ auth: appAuthentication.token });
+      logger.info("Initialized GitHub App authentication");
+    } catch (error) {
+      logger.error(`Failed to initialize GitHub App authentication: ${error}`);
     }
   }
 
@@ -88,26 +88,48 @@ class GitHubClient {
     perPage = 100
   ) {
     try {
-      const iterator = this.app.octokit.paginate.iterator(
-        this.app.octokit.rest.repos.listReleases,
-        {
+      const query = `
+        query($owner: String!, $repo: String!, $perPage: Int!, $cursor: String) {
+          repository(owner: $owner, name: $repo) {
+            releases(first: $perPage, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}) {
+              nodes {
+                name
+                description
+                tagName
+                createdAt
+                publishedAt
+                author {
+                  login
+                }
+              }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+            }
+          }
+        }
+      `;
+      const releases = [];
+      let cursor = null;
+      do {
+        const response: any = await this.getOctokit().graphql(query, {
           owner,
           repo,
-          per_page: perPage,
-          sort: "created",
-          direction: "desc",
-        }
-      );
-      const data = [];
-      for await (const { data: releases } of iterator) {
-        data.push(...releases);
-      }
-      logger.debug(`Found ${data.length} releases for ${owner}/${repo}`);
-      return data.filter(
+          perPage,
+          cursor,
+        });
+        const data = response.repository.releases;
+        releases.push(...data.nodes);
+        cursor = data.pageInfo.hasNextPage ? data.pageInfo.endCursor : null;
+      } while (cursor);
+      const releaseData = releases.filter(
         (release) =>
-          new Date(release.created_at) >= startDate &&
-          new Date(release.created_at) <= endDate
+          new Date(release.createdAt) >= startDate &&
+          new Date(release.createdAt) <= endDate
       );
+      logger.debug(`Found ${releaseData.length} releases for ${owner}/${repo}`);
+      return releaseData;
     } catch (error) {
       logger.error(`Error getting releases for ${owner}/${repo}: ${error}`);
       return [];
@@ -122,27 +144,65 @@ class GitHubClient {
     perPage = 100
   ) {
     try {
-      const iterator = this.app.octokit.paginate.iterator(
-        this.app.octokit.rest.pulls.list,
-        {
+      const query = `
+        query($owner: String!, $repo: String!, $perPage: Int!, $cursor: String) {
+          repository(owner: $owner, name: $repo) {
+            pullRequests(first: $perPage, after: $cursor, states: MERGED, orderBy: {field: CREATED_AT, direction: DESC}) {
+              nodes {
+                number
+                state
+                title
+                body
+                author {
+                  login
+                }
+                createdAt
+                updatedAt
+                closedAt
+                mergedAt
+                commits(first: 1, after: null) {
+                  nodes {
+                    commit {
+                      oid
+                      message
+                      author {
+                        user {
+                          login
+                        }
+                      }
+                      authoredDate
+                    }
+                  }
+                }
+              }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+            }
+          }
+        }
+      `;
+      const prs = [];
+      let cursor = null;
+      do {
+        const response: any = await this.getOctokit().graphql(query, {
           owner,
           repo,
-          state: "closed",
-          per_page: perPage,
-          sort: "created",
-          direction: "desc",
-        }
-      );
-      const data = [];
-      for await (const { data: prs } of iterator) {
-        data.push(...prs);
-      }
-      logger.debug(`Found ${data.length} PRs for ${owner}/${repo}`);
-      return data.filter(
+          perPage,
+          cursor,
+        });
+        const data = response.repository.pullRequests;
+        prs.push(...data.nodes);
+        cursor = data.pageInfo.hasNextPage ? data.pageInfo.endCursor : null;
+      } while (cursor);
+      const prData = prs.filter(
         (pr) =>
-          new Date(pr.created_at) >= startDate &&
-          new Date(pr.created_at) <= endDate
+          new Date(pr.createdAt) >= startDate &&
+          new Date(pr.createdAt) <= endDate
       );
+      logger.debug(`Found ${prData.length} PRs for ${owner}/${repo}`);
+      return prData;
     } catch (error) {
       logger.error(`Error getting PRs for ${owner}/${repo}: ${error}`);
       return [];
@@ -157,57 +217,100 @@ class GitHubClient {
     perPage = 100
   ) {
     try {
-      const iterator = this.app.octokit.paginate.iterator(
-        this.app.octokit.rest.issues.listForRepo,
-        {
+      const query = `
+        query($owner: String!, $repo: String!, $perPage: Int!, $cursor: String) {
+          repository(owner: $owner, name: $repo) {
+            issues(first: $perPage, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}) {
+              nodes {
+                number
+                title
+                body
+                state
+                author {
+                  login
+                }
+                createdAt
+                closedAt
+              }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+            }
+          }
+        }
+      `;
+      const issues = [];
+      let cursor = null;
+      do {
+        const response: any = await this.getOctokit().graphql(query, {
           owner,
           repo,
-          state: "closed",
-          per_page: perPage,
-          sort: "created",
-          direction: "desc",
-        }
-      );
-      const data = [];
-      for await (const { data: issues } of iterator) {
-        data.push(...issues);
-      }
-      logger.debug(`Found ${data.length} issues for ${owner}/${repo}`);
-      return data.filter(
+          perPage,
+          cursor,
+        });
+        const data = response.repository.issues;
+        issues.push(...data.nodes);
+        cursor = data.pageInfo.hasNextPage ? data.pageInfo.endCursor : null;
+      } while (cursor);
+      const issueData = issues.filter(
         (issue) =>
-          new Date(issue.created_at) >= startDate &&
-          new Date(issue.created_at) <= endDate
+          new Date(issue.createdAt) >= startDate &&
+          new Date(issue.createdAt) <= endDate
       );
+      logger.debug(`Found ${issueData.length} issues for ${owner}/${repo}`);
+      return issueData;
     } catch (error) {
       logger.error(`Error getting issues for ${owner}/${repo}: ${error}`);
       return [];
     }
   }
 
-  async getRepos(owner: string, startDate: Date, endDate: Date, perPage = 100) {
+  async getRepos(
+    owner: string,
+    startDate: Date,
+    endDate: Date,
+    noFilter = false,
+    perPage = 100
+  ) {
     try {
-      const iterator = this.app.octokit.paginate.iterator(
-        this.app.octokit.rest.repos.listForOrg,
-        {
-          org: owner,
-          per_page: perPage,
-          sort: "created",
-          direction: "desc",
+      const query = `
+        query($owner: String!, $perPage: Int!, $cursor: String) {
+          organization(login: $owner) {
+            repositories(first: $perPage, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}) {
+              nodes {
+                name
+                description
+                createdAt
+              }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+            }
+          }
         }
+      `;
+      const repos = [];
+      let cursor = null;
+      do {
+        const response: any = await this.getOctokit().graphql(query, {
+          owner,
+          perPage,
+          cursor,
+        });
+        const data = response.organization.repositories;
+        repos.push(...data.nodes);
+        cursor = data.pageInfo.hasNextPage ? data.pageInfo.endCursor : null;
+      } while (cursor);
+      if (noFilter) return repos;
+      const repoData = repos.filter(
+        (repo) =>
+          new Date(repo.createdAt) >= startDate &&
+          new Date(repo.createdAt) <= endDate
       );
-      const data = [];
-      for await (const { data: repos } of iterator) {
-        data.push(...repos);
-      }
-      logger.debug(`Found ${data.length} repos for ${owner}`);
-      return data.filter((repo) => {
-        const repoDate = repo.created_at;
-        if (!repoDate) {
-          logger.warn(`Repo date is undefined for ${repo.name}`);
-          return false;
-        }
-        return new Date(repoDate) >= startDate && new Date(repoDate) <= endDate;
-      });
+      logger.debug(`Found ${repoData.length} repos for ${owner}`);
+      return repoData;
     } catch (error) {
       logger.error(`Error getting repos for ${owner}: ${error}`);
       return [];

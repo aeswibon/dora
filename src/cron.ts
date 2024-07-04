@@ -1,7 +1,7 @@
 import * as cron from "node-cron";
-import fetchData from "./bulk.js";
-import DataDB from "./db/data.js";
-import logger from "./logger.js";
+import fetchData from "./bulk";
+import DataDB from "./db/data";
+import logger from "./logger";
 
 const startCronJob = () => {
   cron.schedule("0 0 * * *", async () => {

@@ -1,0 +1,76 @@
+# graphql
+
+interface Metrics {
+  deploymentFrequency: Int
+  leadTimeForChanges: Int
+  changeFailureRate: Int
+  timeToRestoreService: Int
+}
+
+type UserMetrics implements Metrics {
+  user: String
+  deploymentFrequency: Int
+  leadTimeForChanges: Int
+  changeFailureRate: Int
+  timeToRestoreService: Int
+}
+
+type RepoMetrics implements Metrics {
+  repo: String
+  deploymentFrequency: Int
+  leadTimeForChanges: Int
+  changeFailureRate: Int
+  timeToRestoreService: Int
+}
+
+type OrgMetrics implements Metrics {
+  org: String
+  deploymentFrequency: Int
+  leadTimeForChanges: Int
+  changeFailureRate: Int
+  timeToRestoreService: Int
+}
+
+type UserEntry {
+  key: String!
+  value: [UserMetrics]
+}
+
+type RepoEntry {
+  key: String!
+  value: [RepoMetrics]
+}
+
+type OrgEntry {
+  key: String!
+  value: [OrgMetrics]
+}
+
+type Dora {
+  users: [UserEntry]
+  repos: [RepoEntry]
+  orgs: [OrgEntry]
+}
+
+interface Response {
+  code: String!
+  message: String!
+}
+
+type DoraResponse implements Response {
+  code: String!
+  message: String!
+  data: Dora
+}
+
+# Query
+type Query {
+  server: String!
+  dora(
+    owner: String!
+    startDate: String!
+    endDate: String!
+    granularity: String!
+    repo: String
+  ): DoraResponse!
+}
