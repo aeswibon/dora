@@ -512,10 +512,10 @@ class MetricsCalculator {
           end: end,
           granularity: granularity,
           score: {
-            deploymentFrequency: orgMetric.deploymentFrequency,
-            leadTime: orgMetric.leadTimeForChanges,
-            meanTimeToRestore: orgMetric.timeToRestoreService,
-            changeFailureRate: orgMetric.changeFailureRate,
+            deploymentFrequency: orgMetric.deploymentFrequency ?? 0,
+            leadTime: orgMetric.leadTimeForChanges ?? 0,
+            meanTimeToRestore: orgMetric.timeToRestoreService ?? 0,
+            changeFailureRate: orgMetric.changeFailureRate ?? 0,
           },
         })
       );
@@ -535,10 +535,10 @@ class MetricsCalculator {
             end: end,
             granularity: granularity,
             score: {
-              deploymentFrequency: repoMetric.deploymentFrequency,
-              leadTime: repoMetric.leadTimeForChanges,
-              meanTimeToRestore: repoMetric.timeToRestoreService,
-              changeFailureRate: repoMetric.changeFailureRate,
+              deploymentFrequency: repoMetric.deploymentFrequency ?? 0,
+              leadTime: repoMetric.leadTimeForChanges ?? 0,
+              meanTimeToRestore: repoMetric.timeToRestoreService ?? 0,
+              changeFailureRate: repoMetric.changeFailureRate ?? 0,
             },
           })
         );
@@ -559,10 +559,10 @@ class MetricsCalculator {
             end: end,
             granularity: granularity,
             score: {
-              deploymentFrequency: userMetric.deploymentFrequency,
-              leadTime: userMetric.leadTimeForChanges,
-              meanTimeToRestore: userMetric.timeToRestoreService,
-              changeFailureRate: userMetric.changeFailureRate,
+              deploymentFrequency: userMetric.deploymentFrequency ?? 0,
+              leadTime: userMetric.leadTimeForChanges ?? 0,
+              meanTimeToRestore: userMetric.timeToRestoreService ?? 0,
+              changeFailureRate: userMetric.changeFailureRate ?? 0,
             },
           })
         );

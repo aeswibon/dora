@@ -1,34 +1,34 @@
 # graphql
 
 interface Metrics {
-  deploymentFrequency: Int
-  leadTimeForChanges: Int
-  changeFailureRate: Int
-  timeToRestoreService: Int
+  deploymentFrequency: String
+  leadTimeForChanges: String
+  changeFailureRate: String
+  timeToRestoreService: String
 }
 
 type UserMetrics implements Metrics {
   user: String
-  deploymentFrequency: Int
-  leadTimeForChanges: Int
-  changeFailureRate: Int
-  timeToRestoreService: Int
+  deploymentFrequency: String
+  leadTimeForChanges: String
+  changeFailureRate: String
+  timeToRestoreService: String
 }
 
 type RepoMetrics implements Metrics {
   repo: String
-  deploymentFrequency: Int
-  leadTimeForChanges: Int
-  changeFailureRate: Int
-  timeToRestoreService: Int
+  deploymentFrequency: String
+  leadTimeForChanges: String
+  changeFailureRate: String
+  timeToRestoreService: String
 }
 
 type OrgMetrics implements Metrics {
   org: String
-  deploymentFrequency: Int
-  leadTimeForChanges: Int
-  changeFailureRate: Int
-  timeToRestoreService: Int
+  deploymentFrequency: String
+  leadTimeForChanges: String
+  changeFailureRate: String
+  timeToRestoreService: String
 }
 
 type UserEntry {
