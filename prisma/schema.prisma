@@ -15,7 +15,8 @@ model repos {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   owner     String
   repo      String
-  user      String
+  issue     Int
+  pr        Int
   timestamp DateTime @default(now())
 }
 
@@ -46,7 +47,20 @@ model prs {
   user      String
   /// [PullRequestType]
   pr        Json
-  /// [CommitType]
-  commit    Json
+  //// [CommitType]
+  // commit    Json
   timestamp DateTime @default(now())
+}
+
+model score {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  org         String
+  repo        String?
+  user        String?
+  /// [ScoreType]
+  score       Json
+  start       DateTime
+  end         DateTime
+  granularity String
+  timestamp   DateTime @default(now())
 }

@@ -1,0 +1,3132 @@
+{
+  "users": {
+    "2024-06-10T00:00:00.000Z": [
+      {
+        "user": "sainak",
+        "deploymentFrequency": 2,
+        "leadTimeForChanges": 439086250,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "nihal467",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 108127000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "dependabot[bot]",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 105395000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "khavinshankar",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 307804000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "bodhish",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 232862000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "Sulochan-khadka",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 2610324000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "rithviknishad",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 346899000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "samholics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      }
+    ],
+    "2024-06-17T00:00:00.000Z": [
+      {
+        "user": "sainak",
+        "deploymentFrequency": 3,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "nihal467",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 301093200,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "khavinshankar",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 15824333.333333334,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "skks1212",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 8664750,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "dependabot[bot]",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "aparnacoronasafe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "user": "samholics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      }
+    ],
+    "2024-06-24T00:00:00.000Z": [
+      {
+        "user": "sainak",
+        "deploymentFrequency": 1,
+        "leadTimeForChanges": 368882000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      }
+    ]
+  },
+  "orgMetrics": {
+    "2024-06-10T00:00:00.000Z": {
+      "deploymentFrequency": 2,
+      "leadTimeForChanges": 490079583.3333333,
+      "changeFailureRate": 0,
+      "timeToRestoreService": 0
+    },
+    "2024-06-17T00:00:00.000Z": {
+      "deploymentFrequency": 3,
+      "leadTimeForChanges": 132299833.33333333,
+      "changeFailureRate": 0,
+      "timeToRestoreService": 0
+    },
+    "2024-06-24T00:00:00.000Z": {
+      "deploymentFrequency": 1,
+      "leadTimeForChanges": 368882000,
+      "changeFailureRate": 0,
+      "timeToRestoreService": 0
+    }
+  },
+  "repoMetrics": {
+    "2024-06-10T00:00:00.000Z": [
+      {
+        "repo": "care-plugin-cookiecutter",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-backup",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "zoomdrive",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "discharge_summary",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "5ParaReader",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "1password-teams-open-source",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-backend-staticfiles",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "10bedicu.org",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "landing",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "application_task_django_sr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "devops-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_scribe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "palliative_care_grid",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ayushma",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_deploy_configs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe-life-app-server",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Bengali",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe.in",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "pub",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": ".github",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "rrt-kerala",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemed",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "infographics-frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "covid",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "tamil",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "analytics-embed",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "oneuptime-automation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-load-test",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_ocr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "timeline",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "bot",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-eks-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-map",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "healthforce",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kannada",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hi-profiles",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "admission_task",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "citizen",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-map-api",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-api",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stay_fe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemedicine-backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "digital_authorization",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Literacy",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "awareness",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "application_task_fullstack_jr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Data-Visualisation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "arike",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-stats-source",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "suraksha",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stay_be",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stats_parser",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "protocols",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-org-data-template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "branding",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe_hcx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "abdm-poc",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "k8-templates",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "automation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "design",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "prescription-builder",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "logistics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "migrantmanagement",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care",
+        "deploymentFrequency": 1,
+        "leadTimeForChanges": 233903500,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_hcx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "analytics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "whatsapp-bot",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "trucks",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "citizen-centre",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "metabase_manager",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "mock-ventilator",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "journal",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dhaya",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "datastore",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "corona-timeline-ui",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "features",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "india-maps",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ayushma_fe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "qr-generator",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "mock-cns-req",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "volunteers",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe-life-app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronaport",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "beginnersguide",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "changelog",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "fizzbuzz",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "vaccine-directory",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "covidvolunteers",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronacell",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "marathi",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telugu",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hindi",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ml.coronasafe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware_template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "rrt-kerala-frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemedicine",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hcx-mock-payer-app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe-1",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_scripts",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dashboard_new",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "summarizer",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superset",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "knowledge",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "changelog_monitor",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_nginx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "capacity",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "network",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "model",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "products",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "infra_template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "chat",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronaRM",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Malayalam_App",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "02-journal",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronapoint",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "afterfloodinfographics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Tools",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-whisper",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "medibase",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "10bedicu",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "india-lsg-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "geo-stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superheroPPE",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "tracker",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe",
+        "deploymentFrequency": 1,
+        "leadTimeForChanges": 746255666.6666666,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      }
+    ],
+    "2024-06-17T00:00:00.000Z": [
+      {
+        "repo": "care-plugin-cookiecutter",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-backup",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "zoomdrive",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "discharge_summary",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "5ParaReader",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "1password-teams-open-source",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-backend-staticfiles",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "10bedicu.org",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "landing",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "application_task_django_sr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "devops-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_scribe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "palliative_care_grid",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ayushma",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_deploy_configs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe-life-app-server",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Bengali",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe.in",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "pub",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": ".github",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "rrt-kerala",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemed",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "infographics-frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "covid",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "tamil",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "analytics-embed",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "oneuptime-automation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-load-test",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_ocr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "timeline",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "bot",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-eks-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-map",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "healthforce",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kannada",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hi-profiles",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "admission_task",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "citizen",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-map-api",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-api",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stay_fe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemedicine-backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "digital_authorization",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Literacy",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "awareness",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "application_task_fullstack_jr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Data-Visualisation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "arike",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-stats-source",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "suraksha",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stay_be",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stats_parser",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "protocols",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-org-data-template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "branding",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe_hcx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "abdm-poc",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "k8-templates",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "automation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "design",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "prescription-builder",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "logistics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "migrantmanagement",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care",
+        "deploymentFrequency": 1,
+        "leadTimeForChanges": 465200000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_hcx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "analytics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "whatsapp-bot",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "trucks",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "citizen-centre",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "metabase_manager",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "mock-ventilator",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "journal",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dhaya",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "datastore",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "corona-timeline-ui",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "features",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "india-maps",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ayushma_fe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "qr-generator",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "mock-cns-req",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "volunteers",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe-life-app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronaport",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "beginnersguide",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "changelog",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "fizzbuzz",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "vaccine-directory",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "covidvolunteers",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronacell",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "marathi",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telugu",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hindi",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ml.coronasafe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware_template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "rrt-kerala-frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemedicine",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hcx-mock-payer-app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe-1",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_scripts",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dashboard_new",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "summarizer",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superset",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "knowledge",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "changelog_monitor",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_nginx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "capacity",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "network",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "model",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "products",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "infra_template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "chat",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronaRM",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Malayalam_App",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "02-journal",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronapoint",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "afterfloodinfographics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Tools",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-whisper",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "medibase",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "10bedicu",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "india-lsg-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "geo-stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superheroPPE",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "tracker",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe",
+        "deploymentFrequency": 2,
+        "leadTimeForChanges": 102036181.81818181,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      }
+    ],
+    "2024-06-24T00:00:00.000Z": [
+      {
+        "repo": "care-plugin-cookiecutter",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-backup",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "zoomdrive",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "discharge_summary",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "5ParaReader",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "1password-teams-open-source",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-backend-staticfiles",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "10bedicu.org",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "landing",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "application_task_django_sr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "devops-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_scribe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "palliative_care_grid",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ayushma",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_deploy_configs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe-life-app-server",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Bengali",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe.in",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "pub",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": ".github",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "rrt-kerala",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemed",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "infographics-frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "covid",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "tamil",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "analytics-embed",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "oneuptime-automation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-load-test",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_ocr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "timeline",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "bot",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-eks-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-map",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "healthforce",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kannada",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hi-profiles",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "admission_task",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "citizen",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-map-api",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-api",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stay_fe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemedicine-backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "digital_authorization",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Literacy",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "awareness",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "application_task_fullstack_jr",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Data-Visualisation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life-docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "arike",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-stats-source",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "suraksha",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stay_be",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stats_parser",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "protocols",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-org-data-template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "branding",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe_hcx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "abdm-poc",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "k8-templates",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "automation",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "design",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "prescription-builder",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "logistics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "migrantmanagement",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "docs",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_hcx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "analytics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "whatsapp-bot",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "trucks",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "citizen-centre",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "metabase_manager",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "mock-ventilator",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "journal",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dhaya",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "datastore",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "corona-timeline-ui",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "features",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "india-maps",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ayushma_fe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "qr-generator",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "mock-cns-req",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "volunteers",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_backend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronasafe-life-app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronaport",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "beginnersguide",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "changelog",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "fizzbuzz",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "vaccine-directory",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "covidvolunteers",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronacell",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "marathi",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telugu",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hindi",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "ml.coronasafe",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_middleware_template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "rrt-kerala-frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "telemedicine",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "hcx-mock-payer-app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe-1",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_scripts",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dashboard_new",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "summarizer",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_frontend",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superset",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "knowledge",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "changelog_monitor",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "kerala-dashboard",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "teleicu_nginx",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superhero_app",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "capacity",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "network",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "model",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "products",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "infra_template",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "chat",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronaRM",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Malayalam_App",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "02-journal",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "coronapoint",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "afterfloodinfographics",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "Tools",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "leaderboard-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care-whisper",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "medibase",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "10bedicu",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "india-lsg-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "life-data",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "geo-stats",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "superheroPPE",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "tracker",
+        "deploymentFrequency": 0,
+        "leadTimeForChanges": 0,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      },
+      {
+        "repo": "care_fe",
+        "deploymentFrequency": 1,
+        "leadTimeForChanges": 368882000,
+        "changeFailureRate": 0,
+        "timeToRestoreService": 0
+      }
+    ]
+  }
+}

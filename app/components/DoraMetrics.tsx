@@ -1,19 +1,60 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { gql, useQuery } from "@apollo/client";
 import ReactEcharts from "echarts-for-react";
-import { fetchDoraMetrics } from "./utils";
 
-type MetricEntry = {
+interface IMetricEntry {
   deploymentFrequency: number;
   leadTimeForChanges: number;
   changeFailureRate: number;
   timeToRestoreService: number;
+}
+
+interface IOrgMetric extends IMetricEntry {
+  org: string;
+}
+
+type OrgEntry = {
+  key: string;
+  value: IOrgMetric[];
 };
 
-type OrgMetrics = {
-  [date: string]: MetricEntry;
-};
+interface DoraData {
+  orgs: OrgEntry[];
+}
+
+const GET_DORA_METRICS = gql`
+  query DoraQuery(
+    $owner: String!
+    $startDate: String!
+    $endDate: String!
+    $granularity: String!
+    $repo: String
+  ) {
+    dora(
+      owner: $owner
+      startDate: $startDate
+      endDate: $endDate
+      granularity: $granularity
+      repo: $repo
+    ) {
+      data {
+        orgs {
+          key
+          value {
+            org
+            deploymentFrequency
+            leadTimeForChanges
+            changeFailureRate
+            timeToRestoreService
+          }
+        }
+      }
+      code
+      message
+    }
+  }
+`;
 
 const DoraMetricsChart = ({
   owner,
@@ -29,39 +70,48 @@ const DoraMetricsChart = ({
   repo?: string;
 }) => {
   const {
-    data: doraData,
-    isLoading,
+    data,
+    loading: isLoading,
     error,
-  } = useQuery({
-    queryKey: ["doraMetrics", owner, repo],
-    queryFn: () =>
-      fetchDoraMetrics(owner, startDate, endDate, granularity, repo),
+  } = useQuery(GET_DORA_METRICS, {
+    variables: {
+      owner,
+      startDate,
+      endDate,
+      granularity,
+      repo,
+    },
   });
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error fetching data</div>;
 
-  const calculateAverageMetrics = (orgMetrics: OrgMetrics): MetricEntry => {
-    const metrics = Object.values(orgMetrics);
+  const doraData = data.dora.data;
+
+  const calculateAverageMetrics = (orgEntries: any[]): any => {
+    const metrics = orgEntries.flatMap((entry) => entry.value);
     const count = metrics.length;
-
     const sum = metrics.reduce((acc, curr) => ({
-      deploymentFrequency: acc.deploymentFrequency + curr.deploymentFrequency,
-      leadTimeForChanges: acc.leadTimeForChanges + curr.leadTimeForChanges,
-      changeFailureRate: acc.changeFailureRate + curr.changeFailureRate,
+      org: owner,
+      deploymentFrequency:
+        acc.deploymentFrequency + (parseFloat(curr.deploymentFrequency) ?? 0),
+      leadTimeForChanges:
+        acc.leadTimeForChanges + (parseFloat(curr.leadTimeForChanges) ?? 0),
+      changeFailureRate:
+        acc.changeFailureRate + (parseFloat(curr.changeFailureRate) ?? 0),
       timeToRestoreService:
-        acc.timeToRestoreService + curr.timeToRestoreService,
+        acc.timeToRestoreService + (parseFloat(curr.timeToRestoreService) ?? 0),
     }));
-
     return {
+      org: owner,
       deploymentFrequency: sum.deploymentFrequency / count,
       leadTimeForChanges: sum.leadTimeForChanges / count,
-      changeFailureRate: sum.changeFailureRate / count,
+      changeFailureRate: sum.changeFailureRate ?? 0 / count,
       timeToRestoreService: sum.timeToRestoreService / count,
     };
   };
 
-  const averageMetrics = calculateAverageMetrics(doraData.orgMetrics);
+  const averageMetrics = calculateAverageMetrics(doraData.orgs);
 
   const getOrgDeploymentFrequencyOption = () => ({
     tooltip: {
@@ -72,7 +122,7 @@ const DoraMetricsChart = ({
     },
     xAxis: {
       type: "category",
-      data: Object.keys(doraData.orgMetrics),
+      data: doraData.orgs.map((entry: OrgEntry) => entry.key),
     },
     yAxis: {
       type: "value",
@@ -81,9 +131,9 @@ const DoraMetricsChart = ({
       {
         name: "Deployment Frequency",
         type: "line",
-        data: Object.values(doraData.orgMetrics)
-          .flatMap((org: any) => org)
-          .map((o: any) => o.deploymentFrequency),
+        data: doraData.orgs.flatMap((entry: OrgEntry) =>
+          entry.value.map((v: IOrgMetric) => v.deploymentFrequency)
+        ),
       },
     ],
     graphic: [
@@ -92,7 +142,9 @@ const DoraMetricsChart = ({
         right: 20,
         top: 20,
         style: {
-          text: `Avg: ${averageMetrics.deploymentFrequency.toFixed(2)}`,
+          text: `Avg: ${parseFloat(averageMetrics.deploymentFrequency).toFixed(
+            2
+          )}`,
           fontSize: 16,
           fontWeight: "bold",
         },
@@ -109,7 +161,7 @@ const DoraMetricsChart = ({
     },
     xAxis: {
       type: "category",
-      data: Object.keys(doraData.orgMetrics),
+      data: doraData.orgs.map((entry: OrgEntry) => entry.key),
     },
     yAxis: {
       type: "value",
@@ -118,9 +170,9 @@ const DoraMetricsChart = ({
       {
         name: "Mean Time to Resolve",
         type: "line",
-        data: Object.values(doraData.orgMetrics)
-          .flatMap((org: any) => org)
-          .map((o: any) => o.timeToRestoreService),
+        data: doraData.orgs.flatMap((entry: OrgEntry) =>
+          entry.value.map((v: IOrgMetric) => v.timeToRestoreService)
+        ),
       },
     ],
     graphic: [
@@ -129,7 +181,9 @@ const DoraMetricsChart = ({
         right: 20,
         top: 20,
         style: {
-          text: `Avg: ${averageMetrics.timeToRestoreService.toFixed(2)}`,
+          text: `Avg: ${parseFloat(averageMetrics.timeToRestoreService).toFixed(
+            2
+          )}`,
           fontSize: 16,
           fontWeight: "bold",
         },
@@ -146,7 +200,7 @@ const DoraMetricsChart = ({
     },
     xAxis: {
       type: "category",
-      data: Object.keys(doraData.orgMetrics),
+      data: doraData.orgs.map((entry: OrgEntry) => entry.key),
     },
     yAxis: {
       type: "value",
@@ -155,9 +209,9 @@ const DoraMetricsChart = ({
       {
         name: "Change Failure Rate",
         type: "line",
-        data: Object.values(doraData.orgMetrics)
-          .flatMap((org: any) => org)
-          .map((o: any) => o.changeFailureRate),
+        data: doraData.orgs.flatMap((entry: OrgEntry) =>
+          entry.value.map((v: IOrgMetric) => v.changeFailureRate)
+        ),
       },
     ],
     graphic: [
@@ -166,7 +220,9 @@ const DoraMetricsChart = ({
         right: 20,
         top: 20,
         style: {
-          text: `Avg: ${averageMetrics.changeFailureRate.toFixed(2)}`,
+          text: `Avg: ${parseFloat(averageMetrics.changeFailureRate).toFixed(
+            2
+          )}`,
           fontSize: 16,
           fontWeight: "bold",
         },
@@ -183,7 +239,7 @@ const DoraMetricsChart = ({
     },
     xAxis: {
       type: "category",
-      data: Object.keys(doraData.orgMetrics),
+      data: doraData.orgs.map((entry: OrgEntry) => entry.key),
     },
     yAxis: {
       type: "value",
@@ -192,9 +248,9 @@ const DoraMetricsChart = ({
       {
         name: "Lead time for Changes",
         type: "line",
-        data: Object.values(doraData.orgMetrics)
-          .flatMap((org: any) => org)
-          .map((o: any) => o.leadTimeForChanges),
+        data: doraData.orgs.flatMap((entry: OrgEntry) =>
+          entry.value.map((v: IOrgMetric) => v.leadTimeForChanges)
+        ),
       },
     ],
     graphic: [
@@ -203,7 +259,9 @@ const DoraMetricsChart = ({
         right: 20,
         top: 20,
         style: {
-          text: `Avg: ${averageMetrics.leadTimeForChanges.toFixed(2)}`,
+          text: `Avg: ${parseFloat(averageMetrics.leadTimeForChanges).toFixed(
+            2
+          )}`,
           fontSize: 16,
           fontWeight: "bold",
         },

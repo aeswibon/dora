@@ -1,6 +1,6 @@
-import DataDB from "./db/data.js";
-import gitHubClient from "./github.js";
-import logger from "./logger.js";
+import DataDB from "./db/data";
+import gitHubClient from "./github";
+import logger from "./logger";
 
 const getStartOfDayGMT = (): Date => {
   const now = new Date();
@@ -15,20 +15,17 @@ const fetchData = async (
   startDate: Date
 ): Promise<void> => {
   try {
-    logger.debug(`Getting repos for ${owner}`);
+    if (!gitHubClient.isAuthenticated()) {
+      await gitHubClient.initializeAppAuth();
+    }
+    logger.debug(`Getting repos for ${owner} since ${startDate}`);
     const endDate = getStartOfDayGMT();
-    const repos = await gitHubClient.getRepos(owner, startDate, endDate);
+    const repos = await gitHubClient.getRepos(owner, startDate, endDate, true);
     const client = db.db;
-    await client.repos.createMany({
-      data: repos.map((repo) => ({
-        owner: owner,
-        repo: repo.name,
-        user: repo.owner.name || "unknown",
-        timestamp: repo.created_at || new Date(),
-      })),
-    });
+    logger.info(`Found ${repos.length} repos for ${owner}`);
     for (const repo of repos) {
       logger.debug(`Getting releases for ${owner}/${repo.name}`);
+      const count = { issue: 0, pr: 0 };
       const releases = await gitHubClient.getReleases(
         owner,
         repo.name,
@@ -39,15 +36,18 @@ const fetchData = async (
         logger.error(`No releases found for ${owner}/${repo.name}`);
         continue;
       }
+      const releaseData = releases.map((release) => ({
+        org: owner,
+        repo: repo.name,
+        user: release.author?.login || "unknown",
+        release,
+        timestamp: release.createdAt,
+      }));
+
       await client.releases.createMany({
-        data: releases.map((release) => ({
-          org: owner,
-          repo: repo.name,
-          user: release.author?.login || "unknown",
-          release,
-          timestamp: release.created_at,
-        })),
+        data: releaseData,
       });
+
       logger.info(
         `Inserted ${releases.length} releases for ${owner}/${repo.name}`
       );
@@ -64,37 +64,19 @@ const fetchData = async (
         continue;
       }
 
-      logger.debug(`Getting commits for ${owner}/${repo.name}`);
-      for (const pr of prs) {
-        if (pr.merged_at) {
-          const commits = await gitHubClient.getPRCommits(
-            owner,
-            repo.name,
-            pr.number,
-            startDate,
-            endDate
-          );
-          if (commits.length === 0) {
-            logger.error(
-              `No commits found for PR ${pr.number} in ${owner}/${repo.name}`
-            );
-            continue;
-          }
-          await client.prs.create({
-            data: {
-              org: owner,
-              repo: repo.name,
-              user: pr.user?.login || "unknown",
-              pr,
-              commit: commits[0],
-              timestamp: pr.created_at,
-            },
-          });
-        }
-      }
+      await client.prs.createMany({
+        data: prs.map((pr) => ({
+          org: owner,
+          repo: repo.name,
+          user: pr.author?.login || "unknown",
+          pr,
+          timestamp: pr.createdAt,
+        })),
+      });
+      count.pr += prs.length;
       logger.info(`Inserted ${prs.length} PRs for ${owner}/${repo.name}`);
 
-      logger.debug(`Getting issues for ${owner}/${repo}`);
+      logger.debug(`Getting issues for ${owner}/${repo.name}`);
       const issues = await gitHubClient.getIssues(
         owner,
         repo.name,
@@ -105,17 +87,26 @@ const fetchData = async (
         logger.error(`No issues found for ${owner}/${repo.name}`);
         continue;
       }
-
+      count.issue += issues.length;
       await client.issues.createMany({
         data: issues.map((issue) => ({
           org: owner,
           repo: repo.name,
-          user: issue.user?.login || "unknown",
+          user: issue.author?.login || "unknown",
           issue,
-          timestamp: issue.created_at,
+          timestamp: issue.createdAt,
         })),
       });
       logger.info(`Inserted ${issues.length} issues for ${owner}/${repo.name}`);
+      await client.repos.create({
+        data: {
+          owner,
+          repo: repo.name,
+          issue: count.issue,
+          pr: count.pr,
+          timestamp: repo.createdAt || new Date(),
+        },
+      });
     }
   } catch (error) {
     logger.error(`Error fetching data for ${owner}: ${error}`);
@@ -125,8 +116,9 @@ const fetchData = async (
 (async () => {
   const dataDB = new DataDB();
   await dataDB.connect();
-  const startDate = new Date("2008-02-01T00:00:00Z");
-  await fetchData("coronasafe", dataDB, startDate);
+  const startDate = getStartOfDayGMT();
+  startDate.setMonth(startDate.getMonth() - 12);
+  await fetchData("appsmithorg", dataDB, startDate);
   await dataDB.close();
 })();
 
